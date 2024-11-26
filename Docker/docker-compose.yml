@@ -1,0 +1,28 @@
+version: "2"
+services:
+  halofirst:
+    image: wineconsole/halo
+    tty: true
+    stdin_open: true
+    ports:
+      - "2302:2302/udp"
+    extra_hosts:
+      - "hosthpc.com:34.197.71.170"
+      - "s1.master.hosthpc.com:34.197.71.170"
+    volumes:
+      - ./halopull:/game
+    environment:
+     - INTERNAL_PORT=2302
+  halosecond:
+    image: wineconsole/halo
+    tty: true
+    stdin_open: true
+    ports:
+      - "2306:2306/udp"
+    extra_hosts:
+      - "hosthpc.com:34.197.71.170"
+      - "s1.master.hosthpc.com:34.197.71.170"
+    volumes:
+      - ./halopull:/game
+    environment:
+     - INTERNAL_PORT=2306
